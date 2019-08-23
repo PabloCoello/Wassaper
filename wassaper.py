@@ -258,8 +258,8 @@ class Wassaper:
 
 
 if __name__ == '__main__':
-    conf = dict(path="./MARIA/MARIA.txt",
-                mask="./masks/twitter_mask.png",
+    conf = dict(path="PATH TO YOUR .txt FILE",
+                mask="PATH TO THE MASK IMAGE FOR WORDCLOUD",
                 color="Random",
                 language="spanish",
                 chart_periods=["hour", "day", "month", "year", "progression"])
