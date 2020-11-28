@@ -1,0 +1,7 @@
+{
+    "path":"PATH TO YOUR .txt FILE",
+    "mask":"PATH TO THE MASK IMAGE FOR WORDCLOUD",
+    "color":"Random",
+    "language":"spanish",
+    "chart_periods":["hour", "day", "month", "year", "progression"]
+}
