@@ -71,17 +71,18 @@ class Wassaper:
         '''
         toret = []
         for message in self.text_:
-            event = []
-            date = message.split("-")[0]
-            date = date.strip(" ")
-            name = message.split(":")[1]
-            name = name[5:]
-            content = message.split(":")[2]
-            content = content.strip(" ")
-            event.append(name)
-            event.append(date)
-            event.append(content)
-            toret.append(event)
+            if len(message.split(":"))>2:
+                event = []
+                date = message.split("-")[0]
+                date = date.strip(" ")
+                name = message.split(":")[1]
+                name = name[5:]
+                content = message.split(":")[2]
+                content = content.strip(" ")
+                event.append(name)
+                event.append(date)
+                event.append(content)
+                toret.append(event)
         toret = pd.DataFrame(toret, columns=["name", "date", "content"])
         return(toret)
 
@@ -93,7 +94,7 @@ class Wassaper:
         toret = []
         for index_row, row in self.matrix_.iterrows():
             try:
-                date_format = datetime.strptime(row["date"], '%d/%m/%y %H:%M')
+                date_format = datetime.strptime(row["date"], '%d/%m/%y, %H:%M')
                 toret.append(row)
             except:
                 pass
@@ -224,7 +225,7 @@ class Wassaper:
         array = []
         toret = self.get_user_matrix(name=user)
         for message in toret['date']:
-            message_date = datetime.strptime(message, '%d/%m/%y %H:%M')
+            message_date = datetime.strptime(message, '%d/%m/%y, %H:%M')
             if time_period == "day":
                 unit.append(message_date.day)
             elif time_period == "month":
